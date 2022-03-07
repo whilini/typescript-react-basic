@@ -1,27 +1,31 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import * as React from "react";
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
+import Router from "./routes/Router";
 
-const Container = styled.div`
-  background-color: ${(props) => props.theme.bgColor};
-`;
-const H1 = styled.h1`
-  color: ${(props) => props.theme.textColor};
-`;
-const Btn = styled.button`
-  background-color: ${(props) => props.theme.btnColor};
-  padding: 10px 20px;
-  border-radius: 7px;
-  border: none;
-  color: ${(props) => props.theme.textColor};
+const GlobalStyle = createGlobalStyle`
+  ${reset};
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
+  body {
+    font-family: 'Comfortaa', sans-serif;
+    background-color: ${(props) => props.theme.bgColor};
+    color: ${(props) => props.theme.textColor}
+  }
+  a {
+    text-decoration:none;
+    color:inherit;
+  }
+  * {
+    box-sizing: border-box;
+  }
 `;
 
-const App = () => {
-  return (
-    <Container>
-      <H1>POTATO</H1>
-      <Btn>BOONG!</Btn>
-    </Container>
-  );
-};
+const App = () => (
+  <React.Fragment>
+    <GlobalStyle />
+    <Router />
+  </React.Fragment>
+);
 
 export default App;
